@@ -5,6 +5,7 @@ export const FavouriteItem = ({ favourite }) => {
     const { name, colors } = favourite;
     return (
         <div className='card mb-2 shadow-lg rounded'>
+
             <div className='card-body'>
                 <span>{name}</span>
                 <div className='d-flex'>

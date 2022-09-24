@@ -1,32 +1,26 @@
-import { PalettesGrid } from "./modules/palettes";
-import { TagsGrid } from "./modules/tags";
-import { FavouritesGrid } from "./modules/favourites";
-import { Header } from "./modules/layouts";
 import { useEffect, useState } from "react";
 
-import { getColorsPalettes, getTags } from "./api";
-
-import { FavContext } from "./context/FavContext";
+import { getColorsPalettes } from "./api";
 
 import './App.css'
+import { ColorPalettesContext } from "./context";
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./routes/home/Home";
+import { PaletteDisplay } from "./routes/palette/PaletteDisplay";
+
 
 export const App = () => {
 
 
     const [colorPalettes, setColorPalettes] = useState([]);
-    const [tags, setTags] = useState([]);
-    const [favourites, setFavourites] = useState([]);
 
 
     useEffect(() => {
 
         getColorsPalettes().then((palettes) => {
             setColorPalettes(palettes)
-            setFavourites((palettes) => palettes.filter((palette) => palette.liked))
 
         }).catch((err) => console.log(err));
-
-        getTags().then((tags) => setTags(tags)).catch((err) => console.log(err));
 
 
         return () => {
@@ -37,14 +31,12 @@ export const App = () => {
 
     return (
         <>
-            <FavContext.Provider value={{ favourites, setFavourites }}>
-                <Header />
-                <div className="row my-5 mx-1">
-                    <TagsGrid tags={tags} />
-                    <PalettesGrid palettes={colorPalettes} />
-                    <FavouritesGrid favourites={favourites} />
-                </div>
-            </FavContext.Provider>
+            <ColorPalettesContext.Provider value={{ colorPalettes, setColorPalettes }}>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/palette/:id' element={<PaletteDisplay />} />
+                </Routes>
+            </ColorPalettesContext.Provider>
         </>
     );
 }
