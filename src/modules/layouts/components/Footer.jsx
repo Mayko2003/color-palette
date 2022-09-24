@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaGithub } from "react-icons/fa"
 export const Footer = () => {
     return (
-        <div className='bg-dark'>
+        <div className='bg-dark mt-5'>
             <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
                 <div calssName="col-md-4 d-flex align-items-center">
                     {/* <a href="/" className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">

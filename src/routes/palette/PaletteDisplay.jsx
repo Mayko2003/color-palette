@@ -34,7 +34,6 @@ export const PaletteDisplay = () => {
                     <h3 className='card-title'>{palette.name}</h3>
                     <span className='card-subtitle text-secondary'>{palette.id}</span>
                     <br />
-                    {/* <span className='badge bg-secondary'>{palette.tags.join(' - ')}</span> */}
                     {
                         palette.tags.map((tag) => {
                             return (
