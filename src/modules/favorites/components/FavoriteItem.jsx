@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const FavouriteItem = ({ favourite }) => {
+export const FavoriteItem = ({ favorite }) => {
 
-    const { name, colors } = favourite;
+    const { name, colors } = favorite;
     return (
         <div className='card mb-2 shadow-lg rounded'>
 

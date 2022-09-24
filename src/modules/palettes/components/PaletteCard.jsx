@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 export const PaletteCard = ({ pallete }) => {
 
     const { id, name, colors, liked } = pallete;
-    const { favourites, setFavourites } = useContext(FavContext);
-    const [isFavourite, setIsFavourite] = useState(liked);
+    const { favorites, setfavorites } = useContext(FavContext);
+    const [isfavorite, setIsfavorite] = useState(liked);
 
-    const handleFavourite = () => {
-        setIsFavourite((isFavourite) => !isFavourite);
-        const index = favourites.findIndex((fav) => fav.id === pallete.id);
+    const handlefavorite = () => {
+        setIsfavorite((isfavorite) => !isfavorite);
+        const index = favorites.findIndex((fav) => fav.id === pallete.id);
         if (index !== -1) {
-            setFavourites((favourites) => favourites.filter((fav) => fav.id !== pallete.id));
+            setfavorites((favorites) => favorites.filter((fav) => fav.id !== pallete.id));
         } else {
-            setFavourites([...favourites, pallete]);
+            setfavorites([...favorites, pallete]);
         }
     }
 
@@ -36,9 +36,9 @@ export const PaletteCard = ({ pallete }) => {
                 <h5 className="card-title">{name}</h5>
                 <div className='d-flex'>
                     <div className='me-auto my-auto'>
-                        {isFavourite ?
-                            <FaHeart className="text-danger" onClick={handleFavourite} style={{ width: '2em', height: '2em' }} /> :
-                            <FaRegHeart className="text-dark" onClick={handleFavourite} style={{ width: '2em', height: '2em' }} />
+                        {isfavorite ?
+                            <FaHeart className="text-danger" onClick={handlefavorite} style={{ width: '2em', height: '2em' }} /> :
+                            <FaRegHeart className="text-dark" onClick={handlefavorite} style={{ width: '2em', height: '2em' }} />
                         }
                     </div>
                     <Link className='btn btn-outline-dark mt-1' to={`/palette/${id}`}>
