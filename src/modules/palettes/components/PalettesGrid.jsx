@@ -2,7 +2,7 @@ import { PaletteCard } from "./PaletteCard"
 
 export const PalettesGrid = ({ palettes }) => {
     return (
-        <div className="col-8">
+        <div className="col-md-8">
             <div className="row">
                 {
                     palettes.map((palette) => {
