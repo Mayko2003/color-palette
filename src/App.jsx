@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 
 import { getColorsPalettes } from "./api";
 
@@ -7,12 +7,15 @@ import { ColorPalettesContext } from "./context";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./routes/home/Home";
 import { PaletteDisplay } from "./routes/palette/PaletteDisplay";
+import { Login } from "./routes/login/Login";
+import { PaletteCreate } from "./routes/palette/PaletteCreate";
+
 
 
 export const App = () => {
 
 
-    const [colorPalettes, setColorPalettes] = useState([]);
+    const { setColorPalettes } = useContext(ColorPalettesContext)
 
 
     useEffect(() => {
@@ -26,17 +29,17 @@ export const App = () => {
         return () => {
 
         }
-    }, [])
+    }, [setColorPalettes])
 
 
     return (
         <>
-            <ColorPalettesContext.Provider value={{ colorPalettes, setColorPalettes }}>
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/palette/:id' element={<PaletteDisplay />} />
-                </Routes>
-            </ColorPalettesContext.Provider>
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/palette/:id' element={<PaletteDisplay />} />
+                <Route path="/login" element={<Login />} />
+                <Route path='/palette/create' element={<PaletteCreate />} />
+            </Routes>
         </>
     );
 }

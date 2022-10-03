@@ -9,9 +9,9 @@ export const TagItem = ({ tag }) => {
 
     const handleSelect = () => {
         if (active) {
-            setFilters({ ...filters, tagFilter: filters.tagFilter.filter(tagF => tagF !== tag.value) })
+            setFilters({ ...filters, tagFilters: filters.tagFilters.filter(tagF => tagF !== tag.value) })
         } else {
-            setFilters({ ...filters, tagFilter: [...filters.tagFilter, tag.value] })
+            setFilters({ ...filters, tagFilters: [...filters.tagFilters, tag.value] })
         }
 
         setActive(current => !current)

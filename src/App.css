@@ -1,0 +1,6 @@
+.color:hover {
+    filter: brightness(85%);
+}
+.color-hash{
+    filter: brightness(90%);
+}

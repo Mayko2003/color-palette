@@ -14,7 +14,7 @@ export const SearchBar = () => {
     const onSubmitForm = (event) => {
         event.preventDefault();
 
-        setFilters((filters) => ({ ...filters, searchField: inputValue }))
+        setFilters((filters) => ({ ...filters, searchFields: inputValue }))
 
     }
 
